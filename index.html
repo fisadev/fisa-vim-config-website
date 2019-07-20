@@ -33,50 +33,83 @@
       <iframe src="https://ghbtns.com/github-btn.html?user=fisadev&repo=fisa-vim-config&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
       <iframe src="https://ghbtns.com/github-btn.html?user=fisadev&repo=fisa-vim-config&type=fork&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
       <p>
-        This is my personal Vim configuration, built according to my personal preferences, without any justification to think it's the best possible vim configuration. 
+          This is my personal <strong>Vim and NeoVim configuration</strong>, built according to my personal preferences, without any justification to think it's the best possible vim configuration. 
         If you like it, great! :) It's mainly oriented to python software development, but many of its features are useful for other languages and editing tasks.
       </p>
-      <div id="good-news-neovim">
-          <p><strong>Using Neovim?</strong></p> 
-          <p>Good news!! I'm working on merging my <a href="http://nvim.fisadev.com">Neovim config</a> into this project, to have a single config for both editors! :)</p>
-          <p>For some time this project was frozen in favor of the Neovim config, but it will be active again supporting both at the same time. Stay tuned!</p>
-      </div>
       <p>
-        Some of the best features (<a href="https://github.com/fisadev/fisa-vim-config/blob/master/docs/features.rst">full list here</a>):
+        Some of the best features (<a href="/features.rst">full list here</a>):
       </p>
       <p>
         <img src="images/demo.gif" alt="Demo" />
       </p>
 
-      <h1><a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><span id="tab-link-install" class="tab-link">Install</span> | <span id="tab-link-upgrade" class="tab-link">Upgrade</span></h1>
-      <div id="tab-install" class="tab">
+      <h1>
+        <span id="tab-link-install-vim" class="tab-link">Install for Vim</span> | 
+        <span id="tab-link-install-neovim" class="tab-link">Install for NeoVim</span> |
+        <span id="tab-link-upgrade" class="tab-link">Upgrade</span>
+      </h1>
+      <div id="tab-install-vim" class="tab">
         <p>
-          <strong>0)</strong> You will need a vim compiled with python support. Check it with <code>vim --version | grep +python</code> 
+          <strong>0)</strong> You will need Vim 8.0 or newer, and compiled with python support 
+          (check for python support with <code>vim --version | grep +python</code>). 
         </p>
         <p>
-          Also, your <code>.vim</code> folder should be empty. If you have one, rename it or move to a different location (to keep a backup, just in case you want to go back).
+          Also, your <code>.vim</code> folder should be empty. 
+          If you have one, rename it or move to a different location (to keep a backup, just in case you want to go back).
         </p>
         <p>
           <strong>1)</strong> Install the required dependencies:
         </p>
           <pre>
-sudo apt-get install curl vim exuberant-ctags git ack-grep
-sudo pip install pep8 flake8 pyflakes isort yapf</pre>
+sudo apt install git curl python3-pip exuberant-ctags ack-grep
+sudo pip3 install flake8 pylint isort</pre>
         </p>
         <p>
-          <strong>2)</strong> Download the <a href="https://raw.github.com/fisadev/fisa-vim-config/master/.vimrc"><code>.vimrc</code></a> file and place it in your linux home folder.
+          <strong>2)</strong> Download the <a href="https://raw.github.com/fisadev/fisa-vim-config/master/config.vim">config file</a> 
+          and save it as <code>~/.vimrc</code> (super important to respect that exact name).
         </p>
         <p>
-          <strong>3)</strong> Open vim and it will continue the installation by itself.
-          Wait for it to finish...
-          and done! You now have your new shiny powerful vim :)
+          <strong>3)</strong> Open Vim and it will continue the installation by itself. Wait for it to finish... and done! 
+          You now have your new shiny powerful Vim :)
         </p>
         <p>
-          <strong>Optional:</strong> If you want fancy symbols and breadcrumbs on your status line, check <a href="https://github.com/fisadev/fisa-vim-config/blob/master/docs/fancy_symbols.rst">this small tutorial</a>.
+          <strong>Optional:</strong> If you want fancy symbols and breadcrumbs on your status line and fancy icons for your files explorer, 
+          check <a href="/fancy_symbols.html">this simple instructions</a>.
+        </p>
+      </div>
+
+      <div id="tab-install-neovim" class="tab">
+        <p>
+          <strong>0)</strong> You will need NeoVim 0.3 or newer.
+          For Ubuntu I recommend installing it using the app.image version, which can be downloaded <a href="https://github.com/neovim/neovim/releases">here</a>.
         </p>
         <p>
-          <strong>Docker:</strong> Federico Gonzalez (<a href="https://github.com/fedeg">FedeG</a>) made a docker image which runs vim with this config inside, you can find it <a href="https://fedeg.github.io/python-vim/">here</a> or in <a href="https://hub.docker.com/r/fedeg/python-vim/">docker hub</a>.
+            More info and alternative methods <a href="https://github.com/neovim/neovim/wiki/Installing-Neovim">here</a>.
         </p>
+        <p>
+          Also, your <code>.config/nvim</code> folder should be empty. 
+          If you have one, rename it or move to a different location (to keep a backup, just in case you want to go back).
+        </p>
+        <p>
+          <strong>1)</strong> Install the required dependencies:
+        </p>
+          <pre>
+sudo apt install git curl python3-pip exuberant-ctags ack-grep
+sudo pip3 install pynvim flake8 pylint isort</pre>
+        </p>
+        <p>
+          <strong>2)</strong> Download the <a href="https://raw.github.com/fisadev/fisa-vim-config/master/config.vim">config file</a> 
+          and save it as <code>~/.config/nvim/init.vim</code> (super important to respect that exact path and name).
+        </p>
+        <p>
+          <strong>3)</strong> Open NeoVim and it will continue the installation by itself. Wait for it to finish... and done! 
+          You now have your new shiny powerful NeoVim :)
+        </p>
+        <p>
+          <strong>Optional:</strong> If you want fancy symbols and breadcrumbs on your status line and fancy icons for your files explorer, 
+          check <a href="/fancy_symbols.html">this simple instructions</a>.
+        </p>
+      
       </div>
 
       <div id="tab-upgrade" class="tab">
@@ -132,7 +165,7 @@ sudo pip install pep8 flake8 pyflakes isort yapf</pre>
         }
         $(function() {
             $('.tab-link').click(tabLinkOnClick);
-            $('#tab-link-install').click();
+            $('#tab-link-install-vim').click();
         });
     </script>
 
