@@ -6,3 +6,7 @@
 .tab-link.inactive {
     opacity: 0.4;
 }
+
+.demo-video {
+    max-width: 800px;
+}
