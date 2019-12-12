@@ -10,3 +10,7 @@
 .demo-video {
     max-width: 800px;
 }
+
+.demo-video:focus {
+    outline: none;
+}
