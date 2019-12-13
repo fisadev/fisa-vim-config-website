@@ -23,3 +23,8 @@
 .features li:not(:last-child) {
     margin-bottom: 20px;
 }
+
+#good-news {
+    background: #2DD6BA; 
+    padding: 20px;
+}
