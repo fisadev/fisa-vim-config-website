@@ -14,3 +14,12 @@
 .demo-video:focus {
     outline: none;
 }
+
+.feature-description samp {
+    color: #159957;
+    font-weight: bold;
+}
+
+.features li:not(:last-child) {
+    margin-bottom: 20px;
+}
