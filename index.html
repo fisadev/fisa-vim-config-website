@@ -40,11 +40,20 @@
         </p>
 
         <h1>
-            <span id="tab-link-install-vim" class="tab-link">Install for Vim</span> | 
-            <span id="tab-link-install-neovim" class="tab-link">Install for NeoVim</span> |
-            <span id="tab-link-upgrade" class="tab-link">Upgrade</span>
+            <span id="tab-link-install-vim" class="tab-link" 
+                  data-tab-id="tab-install-vim" data-tab-group="installation">
+                Install for Vim
+            </span> | 
+            <span id="tab-link-install-neovim" class="tab-link" 
+                  data-tab-id="tab-install-neovim" data-tab-group="installation">
+                Install for NeoVim
+            </span> |
+            <span id="tab-link-upgrade" class="tab-link" 
+                  data-tab-id="tab-upgrade" data-tab-group="installation">
+                Upgrade
+            </span>
         </h1>
-        <div id="tab-install-vim" class="tab">
+        <div id="tab-install-vim" class="tab" data-tab-group="installation">
             <p>
                 <strong>0)</strong> You will need Vim 8.0 or newer, and compiled with python support 
                 (check for python support with <code>vim --version | grep +python</code>). 
@@ -70,7 +79,7 @@ sudo pip3 install pynvim flake8 pylint isort</pre>
             </p>
         </div>
 
-        <div id="tab-install-neovim" class="tab">
+        <div id="tab-install-neovim" class="tab" data-tab-group="installation">
             <p>
                 <strong>0)</strong> You will need NeoVim 0.3 or newer.
                 For Ubuntu I recommend installing it using the app.image version, which can be downloaded <a href="https://github.com/neovim/neovim/releases">here</a>.
@@ -99,7 +108,7 @@ sudo pip3 install pynvim flake8 pylint isort</pre>
             </p>
         </div>
 
-        <div id="tab-upgrade" class="tab">
+        <div id="tab-upgrade" class="tab" data-tab-group="installation">
             <p>
                 If you have an older version of fisa-vim-config and want to upgrade it to the latest release, follow these steps:
             </p>
@@ -144,14 +153,330 @@ sudo pip3 install pynvim flake8 pylint isort</pre>
             </p>
         </div>
 
-        <h1 id="features-and-help">
-            Features and help
-        </h1>
-        <div>
-            <p>
-                TBD
-            </p>
+        <h1 id="features-and-help">Detailed docs</h1>
+
+        <div id="detailed-docs">
+            <h3>Python and coding</h3>
+            <ul class="features">
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Smart autocompletion as you type</strong>, sometimes using 
+                            python instrospection (completion of module names, instance methods 
+                            and attributes) and sometimes text-based (used words). 
+                            And it does fuzzy autocompletion too! Fuzzy autocompletion means you 
+                            don't need to type the exact word, typing "satmod" will suggest stuff 
+                            like "SatelliteModel".
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Fuzzy file, code and command finders</strong> (like Textmante 
+                            or Sublime Text). "Fuzzy" means you can type approximately what you 
+                            want, and it will find it anyway (for instance, "satmod" will find 
+                            stuff like "SatelliteModel"). Probably one of the most life-changing 
+                            features.
+                            <br>
+                            <samp>,e</samp> : <strong>file finder</strong>, with recursive 
+                            (subdirectories) and fuzzy file name matching. You can also open the 
+                            files in a new tab with <samp>Ctrl-t</samp>.
+                            <br>
+                            <samp>,g</samp> : <strong>symbol finder (classes, methods, variables, 
+                            functions, ...)</strong> in the current file. <samp>,G</samp> does the 
+                            same but on all opened files, <samp>,wg</samp> and <samp>,wG</samp> are 
+                            variants that search the current word under the cursor.
+                            <br>
+                            <samp>,c</samp> : <strong>command finder</strong> (internal vim 
+                            commands, or custom commands).
+                            <br>
+                            <samp>,f</samp> : <strong>"any text" finder</strong> in the current 
+                            file. <samp>,F</samp> does the same but on all opened files, 
+                            <samp>,wf</samp> and <samp>,wF</samp> are variants that search the 
+                            current word under the cursor.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            Some other neat Python magic spells:
+                            <br>
+                            <samp>,d</samp> : <strong>go to definition</strong> of the thing under 
+                            the cursor. <samp>,D</samp> does the same, but oppening a new tab.
+                            <br>
+                            <samp>,o</samp> : <strong>find occurrences</strong> of the thing under 
+                            the cursor.
+                            <br>
+                            <samp>Shift-K</samp> : <strong>show docstring</strong> of the thing 
+                            under the cursor.
+                            <br>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <samp>F4</samp> : toggle <strong>classes/module browser</strong> that 
+                            lists classes, functions, methods, and such of the current file, and 
+                            navigates to them when ENTER is pressed.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Error and style checking</strong> of code (detects syntax
+                            errors, wrong variable names, unused imoprts, pep8 violations, etc).
+                            Works on several languages, highlights the erros in the code, at the 
+                            line number bar, and the status bar. You can open a summarized list 
+                            of errors with <samp>:lwindow</samp> .
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Git integration</strong>:
+                            <br>
+                            Icons are shown on each changed line to indicate uncommited changes.
+                            <br>
+                            Ability to jump between changes to current file with <samp>\sn</samp> 
+                            and <samp>\sp</samp>.
+                            <br>
+                            Useful commands to interact with repos, such as <samp>:Gstatus</samp>,
+                            <samp>:Gblame</samp>, <samp>:Glog</samp>, <samp>:Gcommit</samp>, etc.
+                            Or simply use <samp>:Git</samp> with any git command you want to use.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <samp>F2</samp> : toggle <strong>pending tasks list</strong> (comments 
+                            in the current file starting with "TODO", "FIXME", etc).
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <samp>,r</samp> : <strong>grep code recursively</strong> using Ack!
+                            <br>
+                            <samp>,wr</samp> : does the same, but searching the current word under
+                            the cursor.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            Utilities to work with indented code:
+                            <br>
+                            <strong>Indentation defined text objects</strong> for vim's editing 
+                            language, named <samp>i</samp>. For instance, you can change an entire 
+                            indented code block with <samp>cii</samp>, or the indented block and 
+                            its header line with <samp>cai</samp> (also works with yank, delete, 
+                            etc).
+                            <br>
+                            <strong>Indentation based movements</strong>: go to the header of an 
+                            indented block with <samp>[-</samp>, to the end of the it with 
+                            <samp>]-</samp>, and more.
+                            <a href="https://github.com/jeetsukumaran/vim-indentwise>">More info</a>.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Surround actions</strong> for vim's editing language. For 
+                            instance, you can change double quotes to single quotes with 
+                            <samp>cs"'</samp>.
+                            <a href="https://github.com/tpope/vim-surround">More info</a>.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <samp>\ci</samp> : <strong>comment and uncomment code</strong> (current 
+                            line or selection).
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            Utilities to work with HTML:
+                            <br>
+                            <strong>CSS colors are painted</strong> with their actual color, no 
+                            more guessing :)
+                            <br>
+                            <strong>Jump between opening/closing tags in HTML and XML</strong> with 
+                            <samp>%</samp> (just like with parenthesis and other open-close pairs).
+                            <br>
+                            <strong>HTML zen coding</strong>: generate lots of html code writing 
+                            simple and short expressions. For instance, insert:
+                            <pre>#books>ul>li.book*5>a</pre>
+                            Then press <samp>Ctrl-y ,</samp> and that will be converted to this:
+<pre><xmp><div id="books">
+    <ul>
+        <li class="book"><a href=""></a></li>
+        <li class="book"><a href=""></a></li>
+        <li class="book"><a href=""></a></li>
+        <li class="book"><a href=""></a></li>
+        <li class="book"><a href=""></a></li>
+    </ul>
+</div></xmp></pre>
+                            <a href="https://github.com/mattn/zencoding-vim/">More info</a>.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Smart autoclosing</strong> of (, [, and {.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            Some <strong>extra Python goodies</strong> when working with Python 
+                            files, like better indentation and automatic removal of trailing spaces 
+                            on save.
+                            <br>
+                            <strong>Add ipdb breakpoints</strong> with <samp>\b</samp>, and 
+                            automatically organize your imports with <samp>:Isort</samp>.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>UI and usability</h3>
+            <ul class="features">
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Beautiful status line</strong> with useful information about 
+                            file type, encoding, position, git branch and status, errors, etc.
+                            When editing python files, it even shows the current function or class.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <samp>F3</samp> : <strong>better project browser</strong>. You can also
+                            open the location of the current file with <samp>,t</samp>.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            Utilities and mappings to work with tabs and splits:
+                            <br>
+                            <strong>Quick tab navigation</strong> using 
+                            <samp>Alt+horizontal arrows</samp>. And <samp>tt</samp> as a shortcut 
+                            to open a new tab.
+                            <br>
+                            <strong>Quick window chooser</strong> with <samp>-</samp>.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Beautiful colorscheme</strong>, and use of 256 colors when 
+                            possible.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            Some <strong>useful vim goodies</strong> enabled/configured:
+                            <br>
+                            Highlight and count search results. Line numbers. Keeping the cursor
+                            3 lines away from the screen border while scrolling. Shell-like 
+                            autocompletion of commands and paths (autocomplete the common part and 
+                            show matching options). Syntax highlighting on by default.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Cycle through your yank (clipboard) history</strong> with 
+                            <samp>Ctrl-p</samp> and <samp>Ctrl-n</samp>.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <h3>Other</h3>
+            <ul class="features">
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Plugins managed using Vim-plug!</strong> 
+                            You can easily install or remove plugins. 
+                            <a href="https://github.com/junegunn/vim-plug>">More info</a>.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Automatically load .vim.custom</strong> configs in your 
+                            projects when opening vim (it searches all the parent directories until 
+                            it finds a custom configs file, or the root dir).
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Python interpreter and other shells inside vim</strong> using 
+                            <samp>:ConqueTerm python</samp>, <samp>:ConqueTerm bash</samp>, etc.
+                            This is Vim specific. NeoVim has its own native alternative.
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="feature-group">
+                        <div class="feature-description">
+                            <strong>Temporary files in better locations</strong>, under 
+                            ~/.vim/dirs (only for Vim, as NeoVim has better default dirs).
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
+
 
         <footer class="site-footer">
             <span>
@@ -169,14 +494,15 @@ sudo pip3 install pynvim flake8 pylint isort</pre>
 
     <script>
         function tabLinkOnClick(e) {
-            var activeLink = $(e.target);
-            var activeTab = $('#' + activeLink.attr('id').replace('-link', ''));
+            var clickedLink = $(e.target);
+            var activeTab = $('#' + clickedLink.data('tab-id'));
+            var tabGroup = clickedLink.data('tab-group');
 
-            $('.tab').not(activeTab).hide();
+            $('.tab[data-tab-group=' + tabGroup + ']').not(activeTab).hide();
             activeTab.fadeIn();
 
-            activeLink.removeClass('inactive');
-            $('.tab-link').not(activeLink).addClass('inactive');
+            clickedLink.removeClass('inactive');
+            $('.tab-link[data-tab-group=' + tabGroup + ']').not(clickedLink).addClass('inactive');
         }
         $(function() {
             $('.tab-link').click(tabLinkOnClick);
